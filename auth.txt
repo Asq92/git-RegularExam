@@ -1,0 +1,3 @@
+Login validation logic
+User authentication module
+JWT token handling
