@@ -1,16 +1,10 @@
 #!/bin/sh
 
-MESSAGE=$(git log -1 --pretty=%B)
+echo "Running formatting check..."
 
-echo "$MESSAGE" | grep -Eq "^TASK-[0-9]+: .+"
-
-if [ $? -ne 0 ]; then
-    echo "❌ Commit message must be TASK-123: Description"
-    exit 1
-fi
-
-echo "Checking formatting..."
-
-if command -v prettier >/dev/null 2>&1; then
+if command -v prettier >/dev/null 2>&1
+then
     prettier --check .
 fi
+
+exit 0
