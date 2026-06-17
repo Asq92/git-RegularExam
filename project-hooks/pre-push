@@ -1,0 +1,16 @@
+#!/bin/sh
+
+echo "Running tests before push..."
+
+if [ -f package.json ]; then
+    npm test
+else
+    echo "No Node project detected"
+fi
+
+if [ $? -ne 0 ]; then
+    echo "❌ Tests failed - push blocked"
+    exit 1
+fi
+
+echo "✅ Tests passed"
